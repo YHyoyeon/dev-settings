@@ -6,8 +6,7 @@ echo "==> [3/6] CLI 개발 도구 설치"
 FORMULAE=(
     git       # 버전 관리
     gh        # GitHub CLI
-    node      # Node.js (npm 포함)
-    nvm       # Node 버전 관리
+    nvm       # Node 버전 관리 (node는 nvm으로 설치 — brew node와 충돌하므로 제외)
     pnpm      # 패키지 매니저
     python3   # Python
     jq        # JSON 처리
@@ -32,5 +31,15 @@ for formula in "${FORMULAE[@]}"; do
         brew install "$formula" || echo "  ⚠ $formula 설치 실패"
     fi
 done
+
+# nvm으로 Node.js LTS 설치 및 기본값 지정
+echo "  --> nvm으로 Node.js LTS 설치 중..."
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && source "/opt/homebrew/opt/nvm/nvm.sh"
+
+nvm install --lts
+nvm use --lts
+nvm alias default lts/*
+echo "  ✓ Node.js $(node -v) 설치 및 기본값 설정 완료"
 
 echo "  ✓ CLI 도구 설치 완료"
