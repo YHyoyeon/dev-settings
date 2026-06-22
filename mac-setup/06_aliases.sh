@@ -22,8 +22,8 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 # NVM (shell function으로 source 필요 — PATH만으로는 nvm use 불가)
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && source "/opt/homebrew/opt/nvm/nvm.sh"
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && source "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 
 # .nvmrc 자동 감지: cd할 때 해당 버전 자동 적용
 autoload -U add-zsh-hook

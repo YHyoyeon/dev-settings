@@ -6,7 +6,6 @@ echo "==> [3/6] CLI 개발 도구 설치"
 FORMULAE=(
     git       # 버전 관리
     gh        # GitHub CLI
-    nvm       # Node 버전 관리 (node는 nvm으로 설치 — brew node와 충돌하므로 제외)
     pnpm      # 패키지 매니저
     python3   # Python
     jq        # JSON 처리
@@ -32,11 +31,18 @@ for formula in "${FORMULAE[@]}"; do
     fi
 done
 
-# nvm으로 Node.js LTS 설치 및 기본값 지정
-echo "  --> nvm으로 Node.js LTS 설치 중..."
+# nvm 설치 (curl 공식 방법 — brew nvm은 경로가 달라 충돌 가능)
+echo "  --> nvm 설치 중 (curl)..."
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && source "/opt/homebrew/opt/nvm/nvm.sh"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+    echo "  ✓ nvm 이미 설치됨"
+else
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+fi
+source "$NVM_DIR/nvm.sh"
 
+# Node.js LTS 설치 및 기본값 지정
+echo "  --> Node.js LTS 설치 중..."
 nvm install --lts
 nvm use --lts
 nvm alias default lts/*
