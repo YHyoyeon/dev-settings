@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "==> [3/7] CLI 개발 도구 설치"
+echo "==> [3/8] CLI 개발 도구 설치"
 
 FORMULAE=(
     # ── 버전관리 / GitHub ──

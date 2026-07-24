@@ -1,0 +1,39 @@
+# 전역 gitignore (~/.gitignore_global) — core.excludesfile 로 연결
+
+# macOS
+.DS_Store
+.AppleDouble
+Icon?
+._*
+
+# 에디터 / IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# 로그 / 임시
+*.log
+tmp/
+.cache/
+
+# 의존성 / 빌드 산출물
+node_modules/
+dist/
+build/
+.next/
+coverage/
+.turbo/
+
+# 환경변수 / 시크릿
+.env
+.env.local
+.env.*.local
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/

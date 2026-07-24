@@ -1,0 +1,6 @@
+# ~/code/me 폴더 전용 (개인 GitHub) — 이름 없는 personal 키 사용
+[user]
+	email = gydus.dev@gmail.com
+
+[core]
+	sshCommand = ssh -i ~/.ssh/id_ed25519_github_personal -o IdentitiesOnly=yes

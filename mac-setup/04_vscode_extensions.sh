@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "==> [4/7] VS Code 확장 설치"
+echo "==> [4/8] VS Code 확장 설치"
 
 if ! command -v code &>/dev/null; then
     export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"

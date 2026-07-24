@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "==> [6/7] zsh 설정 배포 (.zshrc)"
+echo "==> [6/8] zsh 설정 배포 (.zshrc)"
 
 # 레포에서 관리하는 정본 .zshrc 를 ~/.zshrc 로 심링크 (SoT 단일화)
 # → 이후 ~/.zshrc 를 수정하면 레포 파일이 함께 바뀌므로 git commit 만 하면 됨

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "==> [5/7] Oh My Zsh + 플러그인 설치"
+echo "==> [5/8] Oh My Zsh + 플러그인 설치"
 
 # Oh My Zsh 설치
 if [ -d "$HOME/.oh-my-zsh" ]; then

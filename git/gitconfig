@@ -1,0 +1,19 @@
+[user]
+	email = gydus.dev@mcircle.biz
+	name = 윤효연
+
+# ~/code/me 하위 repo 에만 개인 GitHub 설정(이메일 + SSH 키) 적용
+[includeIf "gitdir:~/code/me/"]
+	path = ~/.gitconfig-personal
+
+[init]
+	defaultBranch = main
+
+[push]
+	autoSetupRemote = true
+
+[pull]
+	rebase = false
+
+[core]
+	excludesfile = ~/.gitignore_global

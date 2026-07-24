@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "==> [2/7] 앱 설치 (Homebrew Cask)"
+echo "==> [2/8] 앱 설치 (Homebrew Cask)"
 
 CASKS=(
     # ── 터미널 / 브라우저 ──

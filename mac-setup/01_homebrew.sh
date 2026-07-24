@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "==> [1/7] Homebrew 설치"
+echo "==> [1/8] Homebrew 설치"
 
 if command -v brew &>/dev/null; then
     echo "  ✓ Homebrew 이미 설치됨"

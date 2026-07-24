@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "==> [7/7] 개인 GitHub 전용 SSH 키 생성"
+echo "==> [7/8] 개인 GitHub 전용 SSH 키 생성"
 
 # 개인 GitHub 이메일 (필요 시: GITHUB_EMAIL=other@mail.com bash 07_github_ssh.sh)
 GITHUB_EMAIL="${GITHUB_EMAIL:-gydus.dev@gmail.com}"

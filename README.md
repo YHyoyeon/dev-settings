@@ -23,6 +23,7 @@ bash setup.sh          # 전체 세팅 (01 → 07 순차 실행)
 | 5 | `05_oh_my_zsh.sh` | Oh My Zsh + 플러그인(git clone) |
 | 6 | `06_zshrc.sh` | 정본 `.zshrc`(`zsh/zshrc`)를 `~/.zshrc`로 심링크 배포 |
 | 7 | `07_github_ssh.sh` | 개인 GitHub 전용 SSH 키 생성 |
+| 8 | `08_git.sh` | Git 신원(업무/개인 자동전환) + 전역 gitignore 심링크 배포 |
 
 ---
 
@@ -95,6 +96,23 @@ bash setup.sh          # 전체 세팅 (01 → 07 순차 실행)
 - 기존 `~/.zshrc`가 있으면 `~/.zshrc.pre-devsetup`로 백업 후 교체.
 - 포함: oh-my-zsh + 플러그인, starship 프롬프트, zoxide(smart cd), fzf, nvm + `.nvmrc` 자동감지, eza/bat alias, git·brew·bun·mysql PATH 등.
 - `zoxide init`은 반드시 파일 **맨 끝**에 있어야 함(다른 `chpwd` 훅보다 나중에 등록돼야 경고가 안 뜸).
+
+## Git 설정 (`git/`)
+
+`08_git.sh`가 아래 3개를 `~`로 심링크(정본은 레포). 기존 파일은 `*.pre-devsetup`로 백업.
+
+- [`git/gitconfig`](git/gitconfig) → `~/.gitconfig` — 기본은 **업무 신원**, `~/code/me/` 하위 repo에선 `includeIf`로 **개인 신원 자동 전환**. `init.defaultBranch=main`, `push.autoSetupRemote=true`, `pull.rebase=false`, `core.excludesfile` 포함.
+- [`git/gitconfig-personal`](git/gitconfig-personal) → `~/.gitconfig-personal` — 개인 이메일 + 이름 없는 개인 SSH 키(`id_ed25519_github_personal`).
+- [`git/gitignore_global`](git/gitignore_global) → `~/.gitignore_global` — OS/에디터/빌드/시크릿 전역 무시.
+
+> SSH 키/별칭은 이름을 넣지 않는다: 키 `~/.ssh/id_ed25519_github_personal`, alias `github.com-personal` (07 스텝과 동일 규칙). 개인 repo는 `git@github.com-personal:...` 로 clone.
+
+## Claude Code (`claude/`)
+
+Claude Code 설정은 **회사 내부 하네스(플러그인·statusLine·MCP)에 결합**돼 있어, 개인 repo에는 **개인 취향 설정만** 담고 복원 순서는 문서로 남긴다.
+
+- [`claude/settings.personal.json`](claude/settings.personal.json) — model/theme/effortLevel/permissions만(회사 결합부 제외). `~/.claude/settings.json`에 **병합**(덮어쓰기 금지).
+- [`claude/README.md`](claude/README.md) — 새 맥북 복원 체크리스트(설치·로그인·플러그인·커밋 금지 파일).
 
 ## VS Code
 
