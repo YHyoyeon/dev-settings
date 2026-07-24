@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "==> [6/6] Alias 및 PATH 설정"
+echo "==> [6/7] Alias 및 PATH 설정"
 
 ZSHRC="$HOME/.zshrc"
 MARKER="# ===== Dev Setup (mac-setup) ====="
@@ -17,7 +17,6 @@ cat >> "$ZSHRC" << 'EOF'
 
 # PATH
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-export PATH="$PATH:/Applications/Fork.app/Contents/Resources/gitface"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 # NVM (shell function으로 source 필요 — PATH만으로는 nvm use 불가)
@@ -54,7 +53,7 @@ alias cat='bat --style=plain'            # syntax highlight cat (bat 설치 시)
 # ── 앱 실행 ────────────────────────────────
 # code 명령: PATH로 등록된 바이너리 직접 사용 (alias는 무한 재귀 발생)
 alias c.='/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code .'
-alias fork='open -a Fork .'
+alias kraken='open -a GitKraken .'
 alias chrome='open -a "Google Chrome"'
 
 # ── Git ────────────────────────────────────

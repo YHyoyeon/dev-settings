@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "==> [4/6] VS Code 확장 설치"
+echo "==> [4/7] VS Code 확장 설치"
 
 if ! command -v code &>/dev/null; then
     export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
@@ -17,6 +17,7 @@ EXTENSIONS=(
     anthropic.claude-code
     eamodio.gitlens
     donjayamanne.githistory
+    jackiotyu.git-worktree-manager
     github.vscode-github-actions
     ziyasal.vscode-open-in-github
 
@@ -36,18 +37,29 @@ EXTENSIONS=(
 
     # Python
     ms-python.python
+    ms-python.vscode-pylance
     ms-python.debugpy
     ms-python.vscode-python-envs
 
-    # 인프라 / DB
+    # 인프라 / DB / 원격
     4ops.terraform
     prisma.prisma
     redhat.vscode-yaml
     ms-azuretools.vscode-docker
     ms-azuretools.vscode-containers
     ms-vscode-remote.remote-containers
+    ms-vscode-remote.remote-ssh
+    ms-vscode-remote.remote-ssh-edit
+    ms-vscode-remote.remote-wsl
     ms-vscode-remote.vscode-remote-extensionpack
+    ms-vscode.remote-explorer
+    ms-vscode.remote-server
     mechatroner.rainbow-csv
+
+    # 문서 / 다이어그램
+    shd101wyy.markdown-preview-enhanced
+    arichika.previewseqdiag-vscode
+    mscgenjs.vscode-mscgen
 
     # UI / 테마
     monokai.theme-monokai-pro-vscode

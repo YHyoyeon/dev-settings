@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "==> [2/6] 앱 설치 (Homebrew Cask)"
+echo "==> [2/7] 앱 설치 (Homebrew Cask)"
 
 CASKS=(
     # 터미널
@@ -14,24 +14,30 @@ CASKS=(
     visual-studio-code
 
     # Git GUI
-    fork
+    gitkraken
 
     # 컨테이너
-    docker
+    docker-desktop    # Docker Desktop
 
     # DB 클라이언트
-    chat2db           # Chat2DB (SQL + NoSQL 통합)
+    tableplus         # SQL GUI
     mongodb-compass   # MongoDB GUI
-    redisinsight      # Redis GUI
+    redis-insight     # Redis GUI
 
     # 디자인
     figma
+    drawio            # 다이어그램
+
+    # 협업 / 노트
+    notion
+    slack
+
+    # 유틸리티
+    rectangle         # 창 관리 (단축키 스냅)
 
     # AI
-    claude
-
-    # 클립보드
-    maccy
+    claude            # Claude 데스크탑 앱
+    claude-code       # Claude Code CLI
 )
 
 for cask in "${CASKS[@]}"; do

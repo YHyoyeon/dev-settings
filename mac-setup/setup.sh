@@ -24,6 +24,7 @@ run_step 03_dev_tools.sh
 run_step 04_vscode_extensions.sh
 run_step 05_oh_my_zsh.sh
 run_step 06_aliases.sh
+run_step 07_github_ssh.sh
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -33,9 +34,8 @@ echo "다음 단계:"
 echo "  1. source ~/.zshrc           # alias 즉시 적용"
 echo "  2. Warp 실행 후 기본 터미널로 설정"
 echo "  3. VS Code 실행 → Monokai Pro 테마 활성화 (라이선스 필요)"
-echo "  4. Fork 실행 → 계정 연결"
-echo "  5. Maccy 실행 → 시스템 환경설정 > 손쉬운 사용 권한 허용"
-echo "  6. SSH 키 생성 및 GitHub 등록 (필요 시)"
-echo "     ssh-keygen -t ed25519 -C 'your@email.com' -f ~/.ssh/github_id"
-echo "     gh auth login -h github.com -p ssh"
+echo "  4. GitKraken 실행 → 계정 연결"
+echo "  5. 개인 GitHub SSH 공개키 등록 ([7/7]에서 클립보드에 복사됨)"
+echo "     https://github.com/settings/ssh/new → 붙여넣기 → 저장"
+echo "     테스트: ssh -T git@github.com-personal"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
