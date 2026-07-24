@@ -18,10 +18,10 @@ bash setup.sh          # 전체 세팅 (01 → 07 순차 실행)
 |---|---|---|
 | 1 | `01_homebrew.sh` | Homebrew 설치(curl) + 최신 `curl` formula |
 | 2 | `02_apps.sh` | GUI 앱 설치 (Homebrew Cask) |
-| 3 | `03_dev_tools.sh` | CLI 도구(formula) + nvm(curl) + Node LTS |
+| 3 | `03_dev_tools.sh` | CLI 도구(formula) + terraform(tap) + nvm/Node(curl) + bun(curl) |
 | 4 | `04_vscode_extensions.sh` | VS Code 확장 일괄 설치 |
 | 5 | `05_oh_my_zsh.sh` | Oh My Zsh + 플러그인(git clone) |
-| 6 | `06_aliases.sh` | `.zshrc` alias · PATH · nvmrc 자동감지 훅 |
+| 6 | `06_zshrc.sh` | 정본 `.zshrc`(`zsh/zshrc`)를 `~/.zshrc`로 심링크 배포 |
 | 7 | `07_github_ssh.sh` | 개인 GitHub 전용 SSH 키 생성 |
 
 ---
@@ -36,7 +36,9 @@ bash setup.sh          # 전체 세팅 (01 → 07 순차 실행)
 | Google Chrome | `google-chrome` | |
 | VS Code | `visual-studio-code` | |
 | GitKraken | `gitkraken` | Git GUI |
+| GitKraken CLI | `gitkraken-cli` | `gk` 명령 |
 | Docker Desktop | `docker-desktop` | |
+| AWS SSM plugin | `session-manager-plugin` | ECS/EC2 세션 접속 |
 | TablePlus | `tableplus` | SQL GUI |
 | MongoDB Compass | `mongodb-compass` | |
 | Redis Insight | `redis-insight` | |
@@ -50,7 +52,16 @@ bash setup.sh          # 전체 세팅 (01 → 07 순차 실행)
 
 ### 🍺 2. Homebrew Formula — CLI 도구 (`01`, `03`)
 
-`curl` · `git` · `gh` · `pnpm` · `python3` · `jq` · `tree` · `fzf` · `bat` · `eza` · `ripgrep` · `fd` · `htop` · `wget`
+- **버전관리/GitHub**: `git` · `gh` · `lazygit`
+- **런타임/패키지**: `pnpm` · `python3`
+- **클라우드**: `awscli` · `terraform`(hashicorp tap)
+- **DB CLI**: `mysql-client` · `mongosh` · `redis`(redis-cli)
+- **셸/탐색**: `starship` · `zoxide` · `fzf` · `eza` · `bat` · `ripgrep` · `fd` · `tree` · `ncdu`
+- **데이터 처리**: `jq` · `yq`
+- **기타**: `curl` · `wget` · `htop` · `tlrc`(tldr) · `chroma` · `clipboard`
+
+> `terraform`은 라이선스 변경으로 homebrew-core에서 빠져 `brew install hashicorp/tap/terraform` 로 설치.
+> `mysql-client`는 keg-only라 `.zshrc`에서 PATH 등록.
 
 ### 🌐 3. curl 공식 스크립트 — brew로 하면 경로 충돌
 
@@ -58,6 +69,7 @@ bash setup.sh          # 전체 세팅 (01 → 07 순차 실행)
 |---|---|
 | Homebrew 자체 | `01_homebrew.sh` |
 | nvm | `03_dev_tools.sh` (brew nvm은 경로 충돌 → curl 방식 채택) |
+| bun | `03_dev_tools.sh` (`curl -fsSL https://bun.sh/install \| bash`) |
 | Oh My Zsh | `05_oh_my_zsh.sh` |
 
 ### 📦 4. git clone — zsh 플러그인 (`05_oh_my_zsh.sh`)
@@ -75,6 +87,14 @@ bash setup.sh          # 전체 세팅 (01 → 07 순차 실행)
 - **개인 GitHub SSH 공개키** — `07` 스텝이 클립보드에 복사 → GitHub에 붙여넣기(아래 참고)
 
 ---
+
+## zsh 설정 (`zsh/zshrc`)
+
+`.zshrc`는 레포의 [`zsh/zshrc`](zsh/zshrc)가 **정본(SoT)**이다. `06_zshrc.sh`가 `~/.zshrc`를 이 파일로 **심링크**하므로, 이후 셸 설정을 바꾸면 레포 파일이 함께 바뀐다 → `git commit`만 하면 동기화된다.
+
+- 기존 `~/.zshrc`가 있으면 `~/.zshrc.pre-devsetup`로 백업 후 교체.
+- 포함: oh-my-zsh + 플러그인, starship 프롬프트, zoxide(smart cd), fzf, nvm + `.nvmrc` 자동감지, eza/bat alias, git·brew·bun·mysql PATH 등.
+- `zoxide init`은 반드시 파일 **맨 끝**에 있어야 함(다른 `chpwd` 훅보다 나중에 등록돼야 경고가 안 뜸).
 
 ## VS Code
 
@@ -109,5 +129,5 @@ git remote set-url origin git@github.com-personal:<USER>/<REPO>.git
 ## 주의 / 참고
 
 - **`claude-code`**: brew cask로 설치되지만 자체 자동 업데이트가 있어 brew 버전 추적과 어긋날 수 있음. 항상 최신을 원하면 공식 방식(`curl -fsSL https://claude.ai/install.sh | bash` 또는 npm `@anthropic-ai/claude-code`)이 더 매끄러움.
-- **`cat` alias** (`06_aliases.sh`): `cat`이 `bat --style=plain`으로 덮어써져 있음. 스크립트/파이프에서 순정 cat이 필요하면 `command cat` 또는 `\cat` 사용.
-- 스크립트 수정 후에는 `bash -n <file>` 로 문법 확인 권장.
+- **`cat`/`ls` alias** (`zsh/zshrc`): `cat`→`bat`, `ls`→`eza`로 덮어써져 있음. 스크립트/파이프에서 순정 명령이 필요하면 `command cat` 또는 `\cat` 사용.
+- 스크립트 수정 후에는 `bash -n <file>`(셸 스크립트) / `zsh -n zsh/zshrc`(zshrc) 로 문법 확인 권장.

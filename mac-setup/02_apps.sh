@@ -4,40 +4,40 @@ set -e
 echo "==> [2/7] 앱 설치 (Homebrew Cask)"
 
 CASKS=(
-    # 터미널
-    warp
+    # ── 터미널 / 브라우저 ──
+    warp                   # GPU 가속 터미널 (AI 명령 제안 내장)
+    google-chrome          # 웹 브라우저
 
-    # 브라우저
-    google-chrome
+    # ── 에디터 / IDE ──
+    visual-studio-code     # 코드 에디터
 
-    # 에디터 / IDE
-    visual-studio-code
+    # ── Git ──
+    gitkraken              # Git GUI 클라이언트
+    gitkraken-cli          # GitKraken CLI (gk 명령)
 
-    # Git GUI
-    gitkraken
+    # ── 컨테이너 / 클라우드 ──
+    docker-desktop         # Docker 데스크탑 (컨테이너 런타임 + GUI)
+    session-manager-plugin # AWS SSM Session Manager 플러그인 (ECS/EC2 세션 접속)
 
-    # 컨테이너
-    docker-desktop    # Docker Desktop
+    # ── DB 클라이언트 ──
+    tableplus              # SQL GUI (MySQL/MariaDB/Postgres 통합)
+    mongodb-compass        # MongoDB GUI
+    redis-insight          # Redis GUI
 
-    # DB 클라이언트
-    tableplus         # SQL GUI
-    mongodb-compass   # MongoDB GUI
-    redis-insight     # Redis GUI
+    # ── 디자인 ──
+    figma                  # UI/UX 디자인
+    drawio                 # 다이어그램 (아키텍처/ERD)
 
-    # 디자인
-    figma
-    drawio            # 다이어그램
+    # ── 협업 / 노트 ──
+    notion                 # 문서 / 위키 / 태스크
+    slack                  # 팀 메신저
 
-    # 협업 / 노트
-    notion
-    slack
+    # ── 유틸리티 ──
+    rectangle              # 창 관리 (단축키로 스냅/분할)
 
-    # 유틸리티
-    rectangle         # 창 관리 (단축키 스냅)
-
-    # AI
-    claude            # Claude 데스크탑 앱
-    claude-code       # Claude Code CLI
+    # ── AI ──
+    claude                 # Claude 데스크탑 앱
+    claude-code            # Claude Code CLI (터미널 AI 코딩)
 )
 
 for cask in "${CASKS[@]}"; do

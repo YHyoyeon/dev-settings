@@ -23,7 +23,7 @@ run_step 02_apps.sh
 run_step 03_dev_tools.sh
 run_step 04_vscode_extensions.sh
 run_step 05_oh_my_zsh.sh
-run_step 06_aliases.sh
+run_step 06_zshrc.sh
 run_step 07_github_ssh.sh
 
 echo ""
