@@ -11,10 +11,14 @@
 2. **로그인** — `claude` 실행 후 `/login` (브라우저, 수동).
    - 자동화가 필요하면 `claude setup-token` → `CLAUDE_CODE_OAUTH_TOKEN` 환경변수(약 1년).
 3. **개인 설정 병합** — [`settings.personal.json`](settings.personal.json)의 내용을
-   `~/.claude/settings.json`에 **병합(merge)**. (model / theme / effortLevel / permissions 만)
+   `~/.claude/settings.json`에 **병합(merge)**. (model / theme / effortLevel / autoMemoryEnabled / permissions 만)
    - 통째로 덮어쓰지 말 것 — 회사 하네스가 넣는 `enabledPlugins` / `statusLine` /
      `extraKnownMarketplaces` 를 날려버림.
-4. **회사 하네스 / 플러그인** (이 repo 밖, Welda 온보딩):
+   - `autoMemoryEnabled: false` — Claude가 세션 간에 스스로 기록하는 auto-memory
+     기능을 끄고, 개인 지침은 아래 [`CLAUDE.md`](CLAUDE.md)로만 관리한다.
+4. **개인 지침 복사** — [`CLAUDE.md`](CLAUDE.md)를 `~/.claude/CLAUDE.md`로 복사.
+   (사용자 레벨 지침 — 모든 프로젝트에 적용됨)
+5. **회사 하네스 / 플러그인** (이 repo 밖, Welda 온보딩):
    - 하네스 repo → `~/code/wd-harness` 클론 (플러그인 마켓플레이스 + statusLine 소스)
    - agent-skills repo 클론 후 개인 스킬을 `~/.claude/skills/` 로 심링크
    - 플러그인: `claude plugin marketplace add <repo>` → `claude plugin install <name>`
