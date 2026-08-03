@@ -43,6 +43,18 @@
        }
      }
      ```
+   - **ECC 스킬 심링크 + 컨텍스트 다이어트** — [`sync-ecc-skills.sh`](sync-ecc-skills.sh) 실행:
+     ```bash
+     bash claude/sync-ecc-skills.sh
+     ```
+     하는 일 (멱등, ECC 서브모듈 업데이트 후 재실행):
+     - ECC 스킬 281개를 `~/.claude/skills/`로 심링크 — Obsidian
+       [claude-code-skills](https://community.obsidian.md/plugins/claude-code-skills)
+       플러그인이 이 경로만 읽기 때문.
+     - `~/.claude/settings.json`의 `skillOverrides` 재생성:
+       심링크로 생긴 맨이름 중복은 전부 `off`, 현재 스택(TS/Node/React/NestJS)과
+       무관한 도메인 122개는 `name-only`(이름만 노출, 필요할 때 모델이 꺼내 씀).
+       도메인이 바뀌면 스크립트 안 `deny_patterns`에서 패턴을 빼면 된다.
 6. **회사 하네스 / 플러그인** (이 repo 밖, Welda 온보딩):
    - 하네스 repo → `~/code/wd-harness` 클론 (플러그인 마켓플레이스 + statusLine 소스)
    - agent-skills repo 클론 후 개인 스킬을 `~/.claude/skills/` 로 심링크

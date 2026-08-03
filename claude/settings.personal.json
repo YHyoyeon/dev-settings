@@ -1,9 +1,11 @@
 {
   "model": "opus[1m]",
   "theme": "auto",
+  "tui": "fullscreen",
   "effortLevel": "xhigh",
   "autoMemoryEnabled": false,
   "permissions": {
+    "defaultMode": "auto",
     "allow": [
       "Read",
       "Edit",
