@@ -1,0 +1,3 @@
+[submodule "claude/plugins/ecc"]
+	path = claude/plugins/ecc
+	url = https://github.com/affaan-m/ECC

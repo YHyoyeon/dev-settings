@@ -25,6 +25,24 @@
      claude plugin marketplace add DietrichGebert/ponytail
      claude plugin install ponytail@ponytail
      ```
+   - [ECC](https://github.com/affaan-m/ECC) — agents/skills/hooks 종합 하네스.
+     이 repo의 `claude/plugins/ecc` **git submodule**로 소스를 직접 들고 있고
+     (wd-harness와 동일하게 로컬 클론을 `directory` 소스로 등록 — 회사 코드에 의존하지 않기 위함),
+     statusLine도 이 서브모듈 안의 스크립트를 가리킨다.
+     ```bash
+     git submodule update --init claude/plugins/ecc
+     claude plugin marketplace add "$(pwd)/claude/plugins/ecc"
+     claude plugin install ecc@ecc
+     ```
+     `~/.claude/settings.json`에 statusLine 등록 (경로는 이 repo를 clone한 위치에 맞게 조정):
+     ```json
+     {
+       "statusLine": {
+         "type": "command",
+         "command": "node <repo-path>/claude/plugins/ecc/scripts/hooks/ecc-statusline.js"
+       }
+     }
+     ```
 6. **회사 하네스 / 플러그인** (이 repo 밖, Welda 온보딩):
    - 하네스 repo → `~/code/wd-harness` 클론 (플러그인 마켓플레이스 + statusLine 소스)
    - agent-skills repo 클론 후 개인 스킬을 `~/.claude/skills/` 로 심링크
