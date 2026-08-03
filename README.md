@@ -1,6 +1,30 @@
-# dev-settings — 새 맥북 개발 환경 자동 세팅
+# dev-settings
 
-새 MacBook에서 개발 환경(앱 · CLI 도구 · VS Code · zsh · 개인 GitHub SSH 키 · Claude Code)을 한 번에 세팅하는 스크립트 모음.
+> macOS 개발 환경 프로비저닝 · dotfiles 관리 자동화
+
+**멱등(idempotent) 셸 스크립트**로 새 MacBook의 개발 환경 전체를 코드로 재현한다 — Homebrew 패키지(cask/formula), VS Code 확장, zsh(oh-my-zsh + starship), git 다중 신원, 개인 GitHub SSH, Claude Code 하네스(ECC 서브모듈).
+
+| | |
+|---|---|
+| **플랫폼** | macOS (Apple Silicon) · zsh · Homebrew |
+| **엔트리포인트** | [`mac-setup/setup.sh`](mac-setup/setup.sh) (01 → 08 순차) |
+| **설정 정본(SoT)** | `zsh/` · `git/` · `claude/` — 심링크로 `~`에 배포 |
+| **멱등성** | 모든 스텝이 기존 설치/설정을 감지하고 건너뜀 |
+
+## 레포 구조
+
+```
+dev-settings/
+├── mac-setup/            # 프로비저닝 스크립트 (01_* ~ 08_*, setup.sh)
+├── zsh/zshrc             # .zshrc 정본 → ~/.zshrc 심링크
+├── git/                  # gitconfig(업무/개인 자동전환) · gitignore_global
+├── claude/               # Claude Code 개인 설정 + ECC 하네스(서브모듈)
+│   ├── settings.personal.json
+│   ├── CLAUDE.md
+│   ├── sync-ecc-skills.sh
+│   └── plugins/ecc/      # git submodule → affaan-m/ECC
+└── vscode/               # 확장 목록 · settings 수동 이관 노트
+```
 
 ## 빠른 시작
 
