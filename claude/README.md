@@ -18,7 +18,14 @@
      기능을 끄고, 개인 지침은 아래 [`CLAUDE.md`](CLAUDE.md)로만 관리한다.
 4. **개인 지침 복사** — [`CLAUDE.md`](CLAUDE.md)를 `~/.claude/CLAUDE.md`로 복사.
    (사용자 레벨 지침 — 모든 프로젝트에 적용됨)
-5. **회사 하네스 / 플러그인** (이 repo 밖, Welda 온보딩):
+5. **개인 필수 플러그인**:
+   - [ponytail](https://github.com/DietrichGebert/ponytail) — 불필요한 코드를 줄이도록
+     유도하는 룰셋을 SessionStart 훅으로 주입.
+     ```bash
+     claude plugin marketplace add DietrichGebert/ponytail
+     claude plugin install ponytail@ponytail
+     ```
+6. **회사 하네스 / 플러그인** (이 repo 밖, Welda 온보딩):
    - 하네스 repo → `~/code/wd-harness` 클론 (플러그인 마켓플레이스 + statusLine 소스)
    - agent-skills repo 클론 후 개인 스킬을 `~/.claude/skills/` 로 심링크
    - 플러그인: `claude plugin marketplace add <repo>` → `claude plugin install <name>`
