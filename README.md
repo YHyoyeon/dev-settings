@@ -1,14 +1,16 @@
 # dev-settings — 새 맥북 개발 환경 자동 세팅
 
-새 MacBook에서 개발 환경(앱 · CLI 도구 · VS Code · zsh · 개인 GitHub SSH 키)을 한 번에 세팅하는 스크립트 모음.
+새 MacBook에서 개발 환경(앱 · CLI 도구 · VS Code · zsh · 개인 GitHub SSH 키 · Claude Code)을 한 번에 세팅하는 스크립트 모음.
 
 ## 빠른 시작
 
 ```bash
-git clone <this-repo> ~/code/me/dev-settings
-cd ~/code/me/dev-settings/mac-setup
-bash setup.sh          # 전체 세팅 (01 → 07 순차 실행)
+git clone --recurse-submodules <this-repo> ~/code/dev-settings
+cd ~/code/dev-settings/mac-setup
+bash setup.sh          # 전체 세팅 (01 → 08 순차 실행)
 ```
+
+이미 clone한 뒤 서브모듈(ECC)만 받으려면: `git submodule update --init claude/plugins/ecc`.
 
 개별 스텝만 다시 돌리려면: `bash 02_apps.sh` 처럼 파일 하나만 실행. 모든 스텝은 **멱등**(이미 설치/설정된 항목은 건너뜀).
 
@@ -109,10 +111,13 @@ bash setup.sh          # 전체 세팅 (01 → 07 순차 실행)
 
 ## Claude Code (`claude/`)
 
-Claude Code 설정은 **회사 내부 하네스(플러그인·statusLine·MCP)에 결합**돼 있어, 개인 repo에는 **개인 취향 설정만** 담고 복원 순서는 문서로 남긴다.
+개인 Claude Code 환경을 다른 PC에서 그대로 복원하기 위한 설정 + 개인 하네스(ECC·ponytail). 회사 하네스와 무관하게 **로컬 서브모듈**로 독립.
 
-- [`claude/settings.personal.json`](claude/settings.personal.json) — model/theme/effortLevel/permissions만(회사 결합부 제외). `~/.claude/settings.json`에 **병합**(덮어쓰기 금지).
-- [`claude/README.md`](claude/README.md) — 새 맥북 복원 체크리스트(설치·로그인·플러그인·커밋 금지 파일).
+- [`claude/settings.personal.json`](claude/settings.personal.json) — 개인 취향 설정. `model`·`theme`·`tui`·`effortLevel`·`autoMemoryEnabled`·`permissions`(`defaultMode: auto` = 세션 시작 시 auto mode) 포함. `~/.claude/settings.json`에 **병합**(덮어쓰기 금지 — `enabledPlugins`/`statusLine`/`skillOverrides`를 날림).
+- [`claude/CLAUDE.md`](claude/CLAUDE.md) — 사용자 레벨 개인 지침(한국어 응답·짧은 답변). `~/.claude/CLAUDE.md`로 복사. `autoMemoryEnabled: false`로 auto-memory 대신 이 파일로만 관리.
+- [`claude/plugins/ecc`](claude/plugins/ecc) — [ECC](https://github.com/affaan-m/ECC) 하네스(agents/skills/hooks)를 **git submodule**로 벤더링. 로컬 클론을 `directory` 소스로 등록하고 statusLine도 이 안의 스크립트를 가리킴.
+- [`claude/sync-ecc-skills.sh`](claude/sync-ecc-skills.sh) — ECC 스킬을 `~/.claude/skills/`로 심링크(Obsidian [claude-code-skills](https://community.obsidian.md/plugins/claude-code-skills) 플러그인용) + `skillOverrides` 재생성으로 컨텍스트 다이어트. 멱등이라 서브모듈 업데이트 후 재실행.
+- [`claude/README.md`](claude/README.md) — 새 맥북 복원 체크리스트(설치·로그인·ponytail·ECC·스킬 동기화·커밋 금지 파일).
 
 ## VS Code
 
