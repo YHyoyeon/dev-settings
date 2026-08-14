@@ -4,12 +4,13 @@
 
 # ── 폰트 ──────────────────────────────
 # Nerd Font 필수: starship 프롬프트 / eza --icons 의 글리프가 여기서 렌더됨
-font-family = JetBrainsMono Nerd Font Mono
+# Maple Mono = 둥근 모서리 + 리가처(Ghostty 기본 활성) + 커시브 이탤릭
+font-family = Maple Mono NF
 font-size = 14
 
 # ── 테마 ──────────────────────────────
 # 내장 테마 목록: `ghostty +list-themes`
-theme = Catppuccin Mocha
+theme = Gruvbox Dark
 background-opacity = 0.97
 background-blur = true
 

@@ -61,7 +61,7 @@ bash setup.sh          # 전체 세팅 (01 → 08 순차 실행)
 | 앱 | cask 토큰 | 비고 |
 |---|---|---|
 | Ghostty | `ghostty` | 터미널 (GPU 가속, 저메모리) |
-| JetBrains Mono Nerd Font | `font-jetbrains-mono-nerd-font` | 터미널 글리프 (starship/eza 아이콘) |
+| Maple Mono NF | `font-maple-mono-nf` | 터미널 폰트 (둥근 리가처 + 글리프) |
 | Google Chrome | `google-chrome` | |
 | VS Code | `visual-studio-code` | |
 | GitKraken | `gitkraken` | Git GUI |
