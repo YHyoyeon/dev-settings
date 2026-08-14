@@ -27,6 +27,7 @@ FORMULAE=(
     fzf           # 퍼지 파인더
     eza           # ls 개선판 (아이콘/트리)
     bat           # cat 개선판 (syntax highlight)
+    atuin         # 셸 히스토리 검색 (Ctrl-R, Warp 히스토리 대체)
     ripgrep       # grep 개선판 (rg)
     fd            # find 개선판
     tree          # 디렉토리 트리 출력

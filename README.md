@@ -8,7 +8,7 @@
 |---|---|
 | **플랫폼** | macOS (Apple Silicon) · zsh · Homebrew |
 | **엔트리포인트** | [`mac-setup/setup.sh`](mac-setup/setup.sh) (01 → 08 순차) |
-| **설정 정본(SoT)** | `zsh/` · `git/` · `claude/` — 심링크로 `~`에 배포 |
+| **설정 정본(SoT)** | `zsh/` · `ghostty/` · `git/` · `claude/` — 심링크로 `~`에 배포 |
 | **멱등성** | 모든 스텝이 기존 설치/설정을 감지하고 건너뜀 |
 
 ## 레포 구조
@@ -17,6 +17,7 @@
 dev-settings/
 ├── mac-setup/            # 프로비저닝 스크립트 (01_* ~ 08_*, setup.sh)
 ├── zsh/zshrc             # .zshrc 정본 → ~/.zshrc 심링크
+├── ghostty/config        # Ghostty 터미널 정본 → ~/.config/ghostty/config 심링크
 ├── git/                  # gitconfig(업무/개인 자동전환) · gitignore_global
 ├── claude/               # Claude Code 개인 설정 + ECC 하네스(서브모듈)
 │   ├── settings.personal.json
@@ -47,7 +48,7 @@ bash setup.sh          # 전체 세팅 (01 → 08 순차 실행)
 | 3 | `03_dev_tools.sh` | CLI 도구(formula) + terraform(tap) + nvm/Node(curl) + bun(curl) |
 | 4 | `04_vscode_extensions.sh` | VS Code 확장 일괄 설치 |
 | 5 | `05_oh_my_zsh.sh` | Oh My Zsh + 플러그인(git clone) |
-| 6 | `06_zshrc.sh` | 정본 `.zshrc`(`zsh/zshrc`)를 `~/.zshrc`로 심링크 배포 |
+| 6 | `06_zshrc.sh` | 정본 `.zshrc`·`ghostty/config`를 `~`로 심링크 배포 |
 | 7 | `07_github_ssh.sh` | 개인 GitHub 전용 SSH 키 생성 |
 | 8 | `08_git.sh` | Git 신원(업무/개인 자동전환) + 전역 gitignore 심링크 배포 |
 
@@ -59,7 +60,8 @@ bash setup.sh          # 전체 세팅 (01 → 08 순차 실행)
 
 | 앱 | cask 토큰 | 비고 |
 |---|---|---|
-| Warp | `warp` | 터미널 |
+| Ghostty | `ghostty` | 터미널 (GPU 가속, 저메모리) |
+| JetBrains Mono Nerd Font | `font-jetbrains-mono-nerd-font` | 터미널 글리프 (starship/eza 아이콘) |
 | Google Chrome | `google-chrome` | |
 | VS Code | `visual-studio-code` | |
 | GitKraken | `gitkraken` | Git GUI |
@@ -83,7 +85,7 @@ bash setup.sh          # 전체 세팅 (01 → 08 순차 실행)
 - **런타임/패키지**: `pnpm` · `python3`
 - **클라우드**: `awscli` · `terraform`(hashicorp tap)
 - **DB CLI**: `mysql-client` · `mongosh` · `redis`(redis-cli)
-- **셸/탐색**: `starship` · `zoxide` · `fzf` · `eza` · `bat` · `ripgrep` · `fd` · `tree` · `ncdu`
+- **셸/탐색**: `starship` · `zoxide` · `fzf` · `atuin`(히스토리 검색) · `eza` · `bat` · `ripgrep` · `fd` · `tree` · `ncdu`
 - **데이터 처리**: `jq` · `yq`
 - **기타**: `curl` · `wget` · `htop` · `tlrc`(tldr) · `chroma` · `clipboard`
 
@@ -110,7 +112,7 @@ bash setup.sh          # 전체 세팅 (01 → 08 순차 실행)
 ### 🔑 6. 설치 후 "수동" 필요 (설치가 아닌 로그인/라이선스)
 
 - **Monokai Pro** — 확장은 자동 설치, **테마 라이선스는 홈페이지에서 별도 구매**
-- **GitKraken · Warp · Docker · Figma · Notion · Slack · Claude** — 앱은 brew로 설치, **계정 로그인만 수동**
+- **GitKraken · Docker · Figma · Notion · Slack · Claude** — 앱은 brew로 설치, **계정 로그인만 수동**
 - **개인 GitHub SSH 공개키** — `07` 스텝이 클립보드에 복사 → GitHub에 붙여넣기(아래 참고)
 
 ---

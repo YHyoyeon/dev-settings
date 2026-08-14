@@ -139,6 +139,10 @@ zstyle ':completion:*' menu select
 # fzf 키바인딩 및 자동완성
 [ -f /opt/homebrew/bin/fzf ] && eval "$(fzf --zsh)"
 
+# atuin: 셸 히스토리 검색 (Ctrl-R). fzf 뒤에서 init 해야 Ctrl-R 을 atuin 이 가져감.
+# --disable-up-arrow: ↑ 는 기존 zsh 동작 유지, Ctrl-R 만 atuin 으로 대체
+command -v atuin &>/dev/null && eval "$(atuin init zsh --disable-up-arrow)"
+
 # starship 프롬프트
 eval "$(starship init zsh)"
 

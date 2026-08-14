@@ -5,8 +5,9 @@ echo "==> [2/8] 앱 설치 (Homebrew Cask)"
 
 CASKS=(
     # ── 터미널 / 브라우저 ──
-    warp                   # GPU 가속 터미널 (AI 명령 제안 내장)
-    google-chrome          # 웹 브라우저
+    ghostty                     # GPU 가속 네이티브 터미널 (Warp 대체, 저메모리)
+    font-jetbrains-mono-nerd-font  # 터미널 글리프용 Nerd Font (starship/eza 아이콘)
+    google-chrome               # 웹 브라우저
 
     # ── 에디터 / IDE ──
     visual-studio-code     # 코드 에디터

@@ -1,0 +1,34 @@
+# Ghostty 설정 — Warp 대체
+# 문법: key = value  (문서: https://ghostty.org/docs/config)
+# 이 파일은 dev-settings 레포가 정본, ~/.config/ghostty/config 로 심링크됨
+
+# ── 폰트 ──────────────────────────────
+# Nerd Font 필수: starship 프롬프트 / eza --icons 의 글리프가 여기서 렌더됨
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 14
+
+# ── 테마 ──────────────────────────────
+# 내장 테마 목록: `ghostty +list-themes`
+theme = Catppuccin Mocha
+background-opacity = 0.97
+background-blur = true
+
+# ── 창 ────────────────────────────────
+window-padding-x = 8
+window-padding-y = 8
+macos-titlebar-style = tabs
+mouse-hide-while-typing = true
+
+# ── 키/입력 ───────────────────────────
+# Alt 를 Meta 로: zsh 단어 이동(⌥←/→) 등 정상 동작
+macos-option-as-alt = true
+copy-on-select = clipboard
+
+# ── 셸 통합 ───────────────────────────
+# zsh 자동 감지. cursor/sudo/title 기능 명시 활성화
+shell-integration = zsh
+shell-integration-features = cursor,sudo,title
+
+# ── 키바인딩 (기본값 위에 추가) ────────
+# ⌘K 로 스크롤백 비우기 (macOS 습관)
+keybind = cmd+k=clear_screen
