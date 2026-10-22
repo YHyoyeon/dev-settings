@@ -11,7 +11,7 @@
 2. **로그인** — `claude` 실행 후 `/login` (브라우저, 수동).
    - 자동화가 필요하면 `claude setup-token` → `CLAUDE_CODE_OAUTH_TOKEN` 환경변수(약 1년).
 3. **개인 설정 병합** — [`settings.personal.json`](settings.personal.json)의 내용을
-   `~/.claude/settings.json`에 **병합(merge)**. (model / theme / effortLevel / autoMemoryEnabled / permissions 만)
+   `~/.claude/settings.json`에 **병합(merge)**. (model / theme / tui / autoMemoryEnabled / includeCoAuthoredBy / inputNeededNotifEnabled / agentPushNotifEnabled / permissions.defaultMode 만)
    - 통째로 덮어쓰지 말 것 — 회사 하네스가 넣는 `enabledPlugins` / `statusLine` /
      `extraKnownMarketplaces` 를 날려버림.
    - `autoMemoryEnabled: false` — Claude가 세션 간에 스스로 기록하는 auto-memory

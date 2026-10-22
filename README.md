@@ -139,7 +139,7 @@ bash setup.sh          # 전체 세팅 (01 → 08 순차 실행)
 
 개인 Claude Code 환경을 다른 PC에서 그대로 복원하기 위한 설정 + 개인 하네스(ECC·ponytail). 회사 하네스와 무관하게 **로컬 서브모듈**로 독립.
 
-- [`claude/settings.personal.json`](claude/settings.personal.json) — 개인 취향 설정. `model`·`theme`·`tui`·`effortLevel`·`autoMemoryEnabled`·`permissions`(`defaultMode: auto` = 세션 시작 시 auto mode) 포함. `~/.claude/settings.json`에 **병합**(덮어쓰기 금지 — `enabledPlugins`/`statusLine`/`skillOverrides`를 날림).
+- [`claude/settings.personal.json`](claude/settings.personal.json) — 개인 취향 설정. `model`·`theme`·`tui`·`autoMemoryEnabled`·`includeCoAuthoredBy`·`inputNeededNotifEnabled`·`agentPushNotifEnabled`·`permissions`(`defaultMode: auto` = 세션 시작 시 auto mode) 포함. `~/.claude/settings.json`에 **병합**(덮어쓰기 금지 — `enabledPlugins`/`statusLine`/`skillOverrides`를 날림).
 - [`claude/CLAUDE.md`](claude/CLAUDE.md) — 사용자 레벨 개인 지침(한국어 응답·짧은 답변). `~/.claude/CLAUDE.md`로 복사. `autoMemoryEnabled: false`로 auto-memory 대신 이 파일로만 관리.
 - [`claude/plugins/ecc`](claude/plugins/ecc) — [ECC](https://github.com/affaan-m/ECC) 하네스(agents/skills/hooks)를 **git submodule**로 벤더링. 로컬 클론을 `directory` 소스로 등록하고 statusLine도 이 안의 스크립트를 가리킴.
 - [`claude/sync-ecc-skills.sh`](claude/sync-ecc-skills.sh) — ECC 스킬을 `~/.claude/skills/`로 심링크(Obsidian [claude-code-skills](https://community.obsidian.md/plugins/claude-code-skills) 플러그인용) + `skillOverrides` 재생성으로 컨텍스트 다이어트. 멱등이라 서브모듈 업데이트 후 재실행.
