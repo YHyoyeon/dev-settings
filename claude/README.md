@@ -48,7 +48,7 @@
      bash claude/sync-ecc-skills.sh
      ```
      하는 일 (멱등, ECC 서브모듈 업데이트 후 재실행):
-     - ECC 스킬 281개를 `~/.claude/skills/`로 심링크 — Obsidian
+     - ECC 스킬 328개를 `~/.claude/skills/`로 심링크 — Obsidian
        [claude-code-skills](https://community.obsidian.md/plugins/claude-code-skills)
        플러그인이 이 경로만 읽기 때문.
      - `~/.claude/settings.json`의 `skillOverrides` 재생성:
