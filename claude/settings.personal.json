@@ -1,5 +1,9 @@
 {
-  "includeCoAuthoredBy": false,
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
+  },
   "model": "opus[1m]",
   "theme": "auto",
   "tui": "fullscreen",
